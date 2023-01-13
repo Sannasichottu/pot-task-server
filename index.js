@@ -1,7 +1,11 @@
+const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 require("dotenv").config();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cors = require('cors')
 
 const port = 3001;
 
@@ -18,10 +22,11 @@ connection.once('open',()=>{
     console.log("Db connection successfully")
 })
 
+//MiddleWare
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(coes());
 
-app.get("/",(req,res) => {
-    res.send("Hlo nanba")
-})
 
 app.listen(port,()=>{
     console.log(`server running on port ${port}`)
