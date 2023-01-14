@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -34,5 +34,9 @@ const userSchema = new Schema({
         default:[]
     },
 });
+
+userSchema.methods.authenticate = function(userSigninPass) {
+    return userSigninPass === this.password
+}
 
 module.exports = mongoose.model("User", userSchema)
